@@ -1,0 +1,15 @@
+*.class
+*.log
+*.jar
+*.war
+*.ear
+.idea/
+*.iml
+out/
+.vscode/
+*.csv
+target/
+bin/
+.DS_Store
+Thumbs.db
+*.tmp
