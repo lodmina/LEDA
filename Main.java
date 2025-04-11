@@ -8,6 +8,7 @@ import util.Timer;
 
 public class Main {
     public static void main(String[] args) {
+
         System.out.println("Iniciando processamento do CSV...");
         // 1. Transformar o CSV original (datas e menções)
         util.CSVTransformation.execute();
@@ -18,7 +19,7 @@ public class Main {
 
         // 3. Definir campos e algoritmos
         String[] campos = {"date", "user", "count"}; // 3 campos pedidos pelo professor
-        String[] algoritmos = {"mergeSort"}; // algoritmos utilizados
+        String[] algoritmos = { "insertionSort", "countingSort", "selectionSort", "quickSort", "quickSortMedianaDeTres", "heapSort"}; // algoritmos utilizados
 
         for (String campo : campos) {
             for (String algoritmo : algoritmos) {
@@ -80,8 +81,36 @@ public class Main {
                 else if (campo.equals("user")) MergeSort.byUser(arr, 0, arr.length - 1);
                 else MergeSort.byCount(arr, 0, arr.length - 1);
                 break;
-
-            //Implementar os outros algoritmos
+                case "selectionSort":
+                if (campo.equals("date")) algoritmos.SelectionSort.byDate(arr);
+                else if (campo.equals("user")) algoritmos.SelectionSort.byUser(arr);
+                else algoritmos.SelectionSort.byCount(arr);
+                break;
+    
+            case "quickSort":
+                if (campo.equals("date")) algoritmos.QuickSort.byDate(arr, 0, arr.length - 1);
+                else if (campo.equals("user")) algoritmos.QuickSort.byUser(arr, 0, arr.length - 1);
+                else algoritmos.QuickSort.byCount(arr, 0, arr.length - 1);
+                break;
+    
+            case "quickSortMedianaDeTres":
+                if (campo.equals("date")) algoritmos.QuickSortMedianaDeTres.byDate(arr, 0, arr.length - 1);
+                else if (campo.equals("user")) algoritmos.QuickSortMedianaDeTres.byUser(arr, 0, arr.length - 1);
+                else algoritmos.QuickSortMedianaDeTres.byCount(arr, 0, arr.length - 1);
+                break;
+    
+            case "heapSort":
+                if (campo.equals("date")) algoritmos.HeapSort.byDate(arr);
+                else if (campo.equals("user")) algoritmos.HeapSort.byUser(arr);
+                else algoritmos.HeapSort.byCount(arr);
+                break;
+    
+            case "countingSort":
+                if (campo.equals("count")) algoritmos.CountingSort.byCount(arr);
+                break;
+    
+            default:
+                System.out.println("Algoritmo não reconhecido: " + algoritmo);
         }
     }
 }
