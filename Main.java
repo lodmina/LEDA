@@ -19,7 +19,7 @@ public class Main {
 
         // 3. Definir campos e algoritmos
         String[] campos = {"date", "user", "count"}; // 3 campos pedidos pelo professor
-        String[] algoritmos = { "insertionSort", "countingSort", "selectionSort", "quickSort", "quickSortMedianaDeTres", "heapSort"}; // algoritmos utilizados
+        String[] algoritmos = {"mergeSort", "insertionSort", "countingSort", "selectionSort", "quickSort", "quickSortMedianaDeTres", "heapSort"}; // algoritmos utilizados
 
         for (String campo : campos) {
             for (String algoritmo : algoritmos) {
