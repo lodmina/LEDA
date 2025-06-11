@@ -1,5 +1,6 @@
 package util;
 
+import estruturas.ListaEncadeada;
 import modelo.Tweet;
 
 import java.io.*;
@@ -55,5 +56,29 @@ public class CSVUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ListaEncadeada<Tweet> lerCSVComLista(String caminho) {
+        ListaEncadeada<Tweet> lista = new ListaEncadeada<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(caminho))) {
+            String linha = reader.readLine();
+            while ((linha = reader.readLine()) != null) {
+                String[] partes = linha.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                if (partes.length < 8) {
+                    continue;
+                }
+
+                Tweet tweet = new Tweet(
+                        partes[0], partes[1], partes[2], partes[3], partes[4], partes[5],
+                        partes[6], Integer.parseInt(partes[7])
+                );
+                lista.adicionar(tweet);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
     }
 }
